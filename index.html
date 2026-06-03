@@ -123,7 +123,8 @@
 
   /* ---- About (Meet James) ---- */
   .about-grid{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:center;}
-  .about-photo{aspect-ratio:3/4;border-radius:16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+  .about-photo{aspect-ratio:3/4;border-radius:16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;overflow:hidden;}
+  .about-photo img{width:100%;height:100%;object-fit:cover;display:block;}
   .about-photo .ph-initials{font-family:'Playfair Display',serif;font-size:46px;font-weight:800;color:rgba(255,255,255,0.85);}
   .about-photo .ph-cap{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
   .about-text h2{color:#fff;font-size:clamp(26px,3.6vw,38px);font-weight:700;margin-bottom:10px;}
@@ -179,6 +180,7 @@
   .testi-card{
     background:#fff;border:1px dashed rgba(27,63,107,0.25);border-radius:16px;padding:28px 26px;
   }
+  .testi-card.filled{border:1px solid var(--border);box-shadow:0 10px 30px rgba(27,63,107,0.07);}
   .testi-card p{font-size:16.5px;color:var(--grey);font-style:italic;line-height:1.6;}
   .testi-meta{margin-top:18px;font-size:14px;font-weight:600;color:var(--navy);font-style:normal;}
   .placeholder-note{margin-top:24px;text-align:center;font-size:14px;color:var(--grey);}
@@ -305,8 +307,7 @@
   <div class="wrap">
     <div class="about-grid">
       <div class="about-photo">
-        <div class="ph-initials">JB</div>
-        <div class="ph-cap">Your photo here</div>
+        <img src="james.jpg" alt="James — JB Health personal trainer">
       </div>
       <div class="about-text">
         <div class="kicker">Who you'll be training with</div>
@@ -423,9 +424,9 @@
     <h2 class="section-title">What clients say</h2>
     <p class="lead">Real words from people training around real injuries.</p>
     <div class="testi-grid">
-      <div class="testi-card">
-        <p>"Testimonial placeholder — a client's words about training around an old injury and getting stronger."</p>
-        <div class="testi-meta">— Client name, age</div>
+      <div class="testi-card filled">
+        <p>"James built exercises around an old ankle injury — my balance, strength and confidence all came back, and we're still working on stability through my ankles and hips. Over the years it's made such a difference, and I want to keep it going as I get older."</p>
+        <div class="testi-meta">— Caroline, 60–69</div>
       </div>
       <div class="testi-card">
         <p>"Testimonial placeholder — a client's words about accountability and feeling looked after month to month."</p>
