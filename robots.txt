@@ -1,0 +1,70 @@
+# JB Health — robots.txt
+# Public landing pages are open to all crawlers.
+# Client programme pages under /programs/ are blocked from AI scrapers.
+
+User-agent: *
+Allow: /
+
+# AI / LLM scrapers — disallowed from client programme pages only
+User-agent: GPTBot
+Disallow: /programs/
+
+User-agent: OAI-SearchBot
+Disallow: /programs/
+
+User-agent: ChatGPT-User
+Disallow: /programs/
+
+User-agent: ClaudeBot
+Disallow: /programs/
+
+User-agent: Claude-Web
+Disallow: /programs/
+
+User-agent: anthropic-ai
+Disallow: /programs/
+
+User-agent: Google-Extended
+Disallow: /programs/
+
+User-agent: CCBot
+Disallow: /programs/
+
+User-agent: PerplexityBot
+Disallow: /programs/
+
+User-agent: Perplexity-User
+Disallow: /programs/
+
+User-agent: Bytespider
+Disallow: /programs/
+
+User-agent: Amazonbot
+Disallow: /programs/
+
+User-agent: Applebot-Extended
+Disallow: /programs/
+
+User-agent: Meta-ExternalAgent
+Disallow: /programs/
+
+User-agent: meta-externalagent
+Disallow: /programs/
+
+User-agent: cohere-ai
+Disallow: /programs/
+
+User-agent: Diffbot
+Disallow: /programs/
+
+User-agent: ImagesiftBot
+Disallow: /programs/
+
+User-agent: Omgilibot
+Disallow: /programs/
+
+User-agent: YouBot
+Disallow: /programs/
+
+User-agent: Timpibot
+Disallow: /programs/
