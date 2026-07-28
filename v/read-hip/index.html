@@ -36,9 +36,9 @@ nav{background:var(--paper);border-bottom:1px solid #e4ecf3;position:sticky;top:
 .burger::after{bottom:0;}
 .menu[open]>summary{background:var(--navy);border-color:var(--navy);color:#fff;}
 .menu-panel{position:absolute;top:38px;right:0;z-index:40;background:#fff;border:1px solid #dce8f2;
-.menu-panel::before{content:"";position:absolute;top:-7px;right:34px;width:12px;height:12px;
-  background:#fff;border-left:1px solid #dce8f2;border-top:1px solid #dce8f2;transform:rotate(45deg);}
   border-radius:12px;box-shadow:0 14px 34px rgba(27,63,107,.16);width:min(92vw,540px);max-height:76vh;overflow:auto;}
+.menu[open]::after{content:"";position:absolute;top:32px;right:34px;width:12px;height:12px;z-index:41;
+  background:#fff;border-left:1px solid #dce8f2;border-top:1px solid #dce8f2;transform:rotate(45deg);}
 .menu-in{padding:14px 18px 16px !important;}
 .m-block{padding:10px 0 4px;}
 .m-block+.m-block{border-top:1px solid #eef3f8;}
@@ -64,7 +64,17 @@ nav{background:var(--paper);border-bottom:1px solid #e4ecf3;position:sticky;top:
 .grp-prog{grid-column:1/-1;border-top:1px solid #eef3f8;margin-top:6px;padding-top:6px;}
 .sub-groups{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;padding-left:14px;}
 .sub-groups>.all a{font-size:.83rem;color:var(--blue);}
-@media(max-width:560px){.menu-panel{position:fixed;left:10px;right:10px;top:60px;width:auto;}.menu-in{grid-template-columns:1fr;}}
+@media(max-width:560px){
+  .nav-inner{flex-wrap:wrap;height:auto;justify-content:flex-start;padding-top:9px;padding-bottom:10px;row-gap:9px;}
+  .brand{font-size:1.15rem;white-space:nowrap;order:1;margin-right:auto;}
+  .nav-links{display:contents;}
+  .nav-links a{order:2;margin-left:1.1rem;font-size:.88rem;white-space:nowrap;}
+  .menu{order:3;flex:0 0 100%;margin-left:0;position:static;}
+  .menu>summary{width:100%;justify-content:center;padding:.55rem .8rem;font-size:.95rem;}
+  .menu[open]::after{display:none;}
+  .menu-panel{position:fixed;left:10px;right:10px;top:104px;width:auto;max-height:calc(100vh - 122px);}
+  .menu-in{grid-template-columns:1fr;}
+}
 .nav-links a:hover{color:var(--navy);}
 header.hero{background:var(--wash);padding:40px 0 36px;border-bottom:1px solid #dce8f2;}
 header.hero h1{font-size:clamp(1.7rem,4vw,2.4rem);}
