@@ -38,6 +38,15 @@
   .player{position:relative;width:100%;aspect-ratio:9/16;border-radius:14px;overflow:hidden;
           background:var(--navy-d);box-shadow:0 10px 30px rgba(27,63,107,.16);}
   .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .facade{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;cursor:pointer;background:var(--navy-d);display:block;}
+  .facade img{width:100%;height:100%;object-fit:cover;display:block;opacity:.82;}
+  .facade .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.94);
+      box-shadow:0 6px 18px rgba(0,0,0,.3);}
+  .facade .play::after{content:"";position:absolute;left:50%;top:50%;
+      transform:translate(-42%,-50%);border-style:solid;border-width:15px 0 15px 24px;
+      border-color:transparent transparent transparent var(--navy);}
+  .facade:hover .play{background:#fff;transform:translate(-50%,-50%) scale(1.06);}
   .player-note{margin:.65rem 0 0;font-size:.82rem;color:var(--grey);text-align:center;}
 
   .cues{list-style:none;margin:.6rem 0 0;padding:0;}
@@ -81,14 +90,13 @@
 <div class="wrap cols">
 
   <div>
-    <div class="player">
-      <iframe src="https://www.youtube-nocookie.com/embed/3Iu-UWtu4mQ?rel=0"
-              title="Knee to Wall Test: How Stiff Is Your Ankle?"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen loading="lazy"></iframe>
+    <div class="player" id="player" data-id="3Iu-UWtu4mQ">
+      <button class="facade" type="button" aria-label="Play: Knee to Wall Test">
+        <img src="https://i.ytimg.com/vi/3Iu-UWtu4mQ/hqdefault.jpg" alt="" loading="lazy">
+        <span class="play"></span>
+      </button>
     </div>
-    <p class="player-note">1 min 7 sec &middot; <a href="https://www.youtube.com/@JBHealthUK">JB Health UK on YouTube</a></p>
+    <p class="player-note">1 min 7 sec &middot; <a href="https://www.youtube.com/shorts/3Iu-UWtu4mQ">watch on YouTube</a> if it won't play here</p>
   </div>
 
   <div>
@@ -132,5 +140,17 @@
   <p>&copy; JB Health. <a href="/">jbhealth.co.uk</a></p>
 </div></footer>
 
+<script>
+// Click to play. Nothing is requested from YouTube until the visitor asks for it,
+// which is better than a nocookie iframe that phones home on page load.
+document.querySelectorAll('.player').forEach(function(p){
+  p.addEventListener('click', function(){
+    var id = p.dataset.id;
+    p.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id +
+      '?autoplay=1&rel=0" title="Play" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ' +
+      'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+  }, {once:true});
+});
+</script>
 </body>
 </html>
