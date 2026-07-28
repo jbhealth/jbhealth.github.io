@@ -60,10 +60,16 @@ footer{padding:24px 0 40px;font-size:.86rem;color:var(--grey);} footer a{color:v
 .grp h2{font-size:1.3rem;} .gd{margin:.35rem 0 1rem;color:var(--grey);max-width:62ch;}
 .films{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.4rem 1.4rem;}
 .films li{padding:.42rem 0;border-bottom:1px dotted #dce8f2;font-size:.97rem;}
-.films li.pending a{color:var(--grey);text-decoration:none;}
-.films li.pending a::after{content:" · soon";font-size:.78rem;color:#b6c2cd;}
-.films li.live a{text-decoration:none;font-weight:500;}
-.films li.live a:hover{text-decoration:underline;}
+a.pending{color:var(--grey);text-decoration:none;}
+a.pending::after{content:" · soon";font-size:.78rem;color:#b6c2cd;}
+a.live{text-decoration:none;font-weight:500;}
+a.live:hover{text-decoration:underline;}
+.week{margin:.2rem 0 1rem;}
+.day{display:grid;grid-template-columns:78px 1fr;gap:0 14px;align-items:baseline;padding:.6rem 0;border-bottom:1px dotted #dce8f2;}
+.day h3{font-family:'DM Sans',sans-serif;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);}
+.day p{margin:0;line-height:1.75;}
+@media(max-width:560px){.day{grid-template-columns:1fr;gap:.15rem;}}
+.gd.note{margin-top:.9rem;font-size:.92rem;}
 </style></head><body>
 <nav><div class="wrap nav-inner">
   <a class="brand" href="/">JB Health</a>
