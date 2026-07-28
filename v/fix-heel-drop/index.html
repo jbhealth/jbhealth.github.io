@@ -23,6 +23,31 @@ nav{background:var(--paper);border-bottom:1px solid #e4ecf3;position:sticky;top:
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
 .brand{font-family:'Playfair Display',serif;font-weight:800;font-size:1.35rem;color:var(--navy);text-decoration:none;}
 .nav-links a{margin-left:1.4rem;font-weight:500;font-size:.95rem;text-decoration:none;color:var(--grey);}
+/* the library menu: collapsible, no JS, current section already open */
+.menu{position:relative;display:inline-block;margin-left:1.4rem;}
+.menu>summary{list-style:none;cursor:pointer;font-weight:500;font-size:.95rem;color:var(--grey);}
+.menu>summary::-webkit-details-marker{display:none;}
+.menu>summary::after{content:" BE";font-size:.8em;}
+.menu[open]>summary{color:var(--navy);}
+.menu[open]>summary::after{content:" B4";}
+.menu-panel{position:absolute;top:38px;right:0;z-index:40;background:#fff;border:1px solid #dce8f2;
+  border-radius:12px;box-shadow:0 14px 34px rgba(27,63,107,.16);width:min(92vw,720px);max-height:74vh;overflow:auto;}
+.menu-in{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:4px 22px;padding:16px 20px !important;}
+.menu-in details{padding:2px 0;}
+.menu-in summary{cursor:pointer;font-weight:700;color:var(--navy);font-size:.92rem;padding:5px 0;list-style:none;}
+.menu-in summary::-webkit-details-marker{display:none;}
+.menu-in summary::before{content:"+ ";color:var(--blue);font-weight:400;}
+.menu-in details[open]>summary::before{content:"2 ";}
+.menu-in ul{list-style:none;margin:0 0 6px;padding:0 0 0 14px;}
+.menu-in li{padding:2px 0;font-size:.9rem;}
+.menu-in a{text-decoration:none;}
+.menu-in a.here{font-weight:700;color:var(--navy);}
+.menu-in a.here::after{content:" 90 you are here";font-size:.76rem;font-weight:400;color:var(--grey);}
+.menu-in li.all a{font-size:.83rem;color:var(--blue);letter-spacing:.02em;}
+.grp-prog{grid-column:1/-1;border-top:1px solid #eef3f8;margin-top:6px;padding-top:6px;}
+.sub-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0 22px;padding-left:14px;}
+.sub-groups>.all a{font-size:.83rem;color:var(--blue);}
+@media(max-width:560px){.menu-panel{position:fixed;left:10px;right:10px;top:60px;width:auto;}.menu-in{grid-template-columns:1fr;}}
 .nav-links a:hover{color:var(--navy);}
 header.hero{background:var(--wash);padding:40px 0 36px;border-bottom:1px solid #dce8f2;}
 header.hero h1{font-size:clamp(1.7rem,4vw,2.4rem);}
@@ -66,6 +91,27 @@ a.pending{color:var(--grey);text-decoration:none;}
 a.pending::after{content:" · soon";font-size:.78rem;color:#b6c2cd;}
 a.live{text-decoration:none;font-weight:500;}
 a.live:hover{text-decoration:underline;}
+.line{padding:26px 0;border-bottom:1px solid #e4ecf3;}
+.line h2{font-size:1.4rem;}
+.wholeday{float:right;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;text-decoration:none;letter-spacing:.02em;}
+@media(max-width:560px){.wholeday{float:none;display:block;margin-top:.3rem;}}
+.line .gd{margin:.3rem 0 .7rem;color:var(--grey);max-width:60ch;}
+.line-links{margin:0;font-size:1.02rem;line-height:2;}
+.line-links a{text-decoration:none;font-weight:500;}
+.line-links a:hover{text-decoration:underline;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin:4px 0 10px;}
+.card{display:block;padding:16px 18px;border:1px solid #dce8f2;border-radius:12px;text-decoration:none;background:#fff;}
+.card:hover{border-color:var(--blue-l);box-shadow:0 4px 14px rgba(27,63,107,.08);}
+.card b{display:block;font-family:'Playfair Display',serif;font-size:1.12rem;color:var(--navy);margin-bottom:.25rem;}
+.card span{display:block;color:var(--grey);font-size:.9rem;line-height:1.5;}
+.card em{display:block;margin-top:.5rem;font-style:normal;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);}
+.card.small span{font-size:.88rem;}
+.session{list-style:none;margin:26px 0 8px;padding:0;}
+.session li{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid #e4ecf3;}
+.session .n{flex:0 0 30px;height:30px;border-radius:50%;background:var(--wash);color:var(--navy);
+  font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+.session a{font-size:1.06rem;}
+.session p{margin:.15rem 0 0;color:var(--grey);font-size:.94rem;}
 .week{margin:.2rem 0 1rem;}
 .day{display:grid;grid-template-columns:78px 1fr;gap:0 14px;align-items:baseline;padding:.6rem 0;border-bottom:1px dotted #dce8f2;}
 .day h3{font-family:'DM Sans',sans-serif;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);}
@@ -86,7 +132,7 @@ a.pending .sub{color:#b6c2cd;}
 </style></head><body>
 <nav><div class="wrap nav-inner">
   <a class="brand" href="/">JB Health</a>
-  <div class="nav-links"><a href="/v/">&larr; All films</a><a href="/book.html">The book</a><a href="/">Training</a></div>
+  <div class="nav-links"><details class='menu'><summary>All films</summary><div class='menu-panel'><div class='wrap menu-in'><details><summary>Read yourself</summary><ul><li class='all'><a href='/v/read/'>All 5 together</a></li><li><a class='live' href='/v/read-ankle/'>Ankles <span class='sub'>knee to wall</span></a></li><li><a class='live' href='/v/read-knee/'>Knees <span class='sub'>step-back lunge</span></a></li><li><a class='live' href='/v/read-hip/'>Hips <span class='sub'>figure-four</span></a></li><li><a class='live' href='/v/read-back/'>Back <span class='sub'>hinge</span></a></li><li><a class='live' href='/v/read-shoulder/'>Shoulders <span class='sub'>wall slide</span></a></li></ul></details><details open><summary>Feet and ankles</summary><ul><li class='all'><a href='/v/ankles/'>All 4 together</a></li><li><a class='pending' href='/v/fix-towel-scrunch/'>Towel scrunch</a></li><li><a class='here' href='/v/fix-heel-drop/'>Heel drop off a step</a></li><li><a class='pending' href='/v/fix-one-leg-stand/'>One-leg stand, done properly</a></li><li><a class='pending' href='/v/fix-tibialis-raise/'>Tibialis raise</a></li></ul></details><details><summary>Knees</summary><ul><li class='all'><a href='/v/knees/'>All 4 together</a></li><li><a class='pending' href='/v/fix-wall-sit/'>Wall sit</a></li><li><a class='pending' href='/v/fix-clamshell/'>Clamshell</a></li><li><a class='pending' href='/v/fix-sit-to-stand/'>Sit-to-stand</a></li><li><a class='pending' href='/v/fix-split-squat/'>Split squat</a></li></ul></details><details><summary>Hips</summary><ul><li class='all'><a href='/v/hips/'>All 4 together</a></li><li><a class='pending' href='/v/fix-hip-flexor-stretch/'>Standing hip-flexor stretch</a></li><li><a class='pending' href='/v/fix-lateral-band-walk/'>Lateral band walk</a></li><li><a class='pending' href='/v/fix-glute-bridge/'>Glute bridge</a></li><li><a class='pending' href='/v/fix-knee-drive/'>Single-leg knee drive</a></li></ul></details><details><summary>Back</summary><ul><li class='all'><a href='/v/lower-back/'>All 4 together</a></li><li><a class='pending' href='/v/fix-dead-bug/'>Dead bug</a></li><li><a class='pending' href='/v/fix-side-plank/'>Side plank</a></li><li><a class='pending' href='/v/fix-hip-hinge/'>Hip hinge</a></li><li><a class='pending' href='/v/fix-suitcase-carry/'>Suitcase carry</a></li></ul></details><details><summary>Shoulders</summary><ul><li class='all'><a href='/v/shoulders/'>All 4 together</a></li><li><a class='pending' href='/v/fix-wall-slide/'>Wall slide</a></li><li><a class='pending' href='/v/fix-open-book/'>Open book</a></li><li><a class='pending' href='/v/fix-band-external-rotation/'>Band external rotation</a></li><li><a class='pending' href='/v/fix-straight-arm-raise/'>Straight-arm raise</a></li></ul></details><details class='grp-prog'><summary>The programme</summary><div class='sub-groups'><div class='all'><a href='/v/programme/'>All three days</a></div><details><summary>Day 1</summary><ul><li class='all'><a href='/v/day-1/'>The whole session</a></li><li><a class='pending' href='/v/move-goblet-squat/'>Goblet squat</a></li><li><a class='pending' href='/v/move-press-up/'>Press-up</a></li><li><a class='pending' href='/v/move-row/'>Row</a></li><li><a class='pending' href='/v/move-farmers-carry/'>Farmer&#x27;s carry</a></li><li><a class='pending' href='/v/move-pallof-press/'>Pallof press</a></li></ul></details><details><summary>Day 2</summary><ul><li class='all'><a href='/v/day-2/'>The whole session</a></li><li><a class='pending' href='/v/move-loaded-hinge/'>Loaded hinge</a></li><li><a class='pending' href='/v/move-overhead-press/'>Overhead press</a></li><li><a class='pending' href='/v/move-pulldown/'>Pulldown</a></li><li><a class='pending' href='/v/fix-suitcase-carry/'>Suitcase carry</a></li><li><a class='pending' href='/v/move-woodchop/'>Woodchop</a></li></ul></details><details><summary>Day 3</summary><ul><li class='all'><a href='/v/day-3/'>The whole session</a></li><li><a class='pending' href='/v/fix-split-squat/'>Split squat</a></li><li><a class='pending' href='/v/fix-straight-arm-raise/'>Straight-arm raise</a></li><li><a class='pending' href='/v/move-face-pull/'>Face pull</a></li><li><a class='pending' href='/v/move-waiter-carry/'>Waiter carry</a></li><li><a class='pending' href='/v/move-bird-dog/'>Bird-dog</a></li></ul></details></div></details></div></div></details><a href="/book.html">The book</a><a href="/">Training</a></div>
 </div></nav>
 <header class='hero'><div class='wrap'><p class='eyebrow'>Fix the roots &middot; Chapter 8</p><h1>The heel drop off a step</h1><p class='lede'>It frees a stiff ankle, and it makes the freedom stick because you&#x27;re loading it.</p></div></header><div class='wrap cols'><div><div class='player'><div class='soon'><b>Filming soon</b><span>The instructions are all here in the meantime.</span></div></div><p class='player-note'>Film on its way</p></div><div><div class='kit'><b>You'll need</b><ul><li>A step, or a sturdy raised surface</li><li>A rail or a wall within reach, for balance</li></ul></div><h2 class='sec'>Set up</h2><ul class='cues'><li>Balls of both feet on the edge of the step, heels hanging off the back</li><li>A hand on the rail</li><li>Feet pointing straight ahead, not turned out</li></ul><h2 class='sec'>The movement</h2><p>Let both heels sink slowly down below the level of the step, as far as they&#x27;ll comfortably go, until you feel the stretch build low in the calf and deep in the ankle. Pause a moment at the bottom. Then rise back up onto the balls of your feet, under control, and go again.</p><h2 class='sec'>What to get right</h2><ul class='cues'><li>The feet pointing dead straight</li><li>The weight even across the ball of each foot, not rolling out to the little-toe side</li><li>Slow down, slow up. It&#x27;s the slow lower into the bottom that does the freeing, so don&#x27;t rush it and don&#x27;t bounce out of it</li></ul><div class='dose'><h3>How much</h3><ul class='cues'><li>10 to 15 slow drops, once or twice a day</li></ul></div><div class='steps'><div class='step'><h3>Easier</h3><ul><li>The ankle dorsiflexion drill from your reading. Heel flat, foot straight, knee driving to the wall and back, until the loaded version feels manageable</li></ul></div><div class='step'><h3>Harder</h3><ul><li>One leg at a time. If one ankle came out clearly stiffer, give that side the extra</li></ul></div></div></div></div><nav class='stepper'><div class='wrap step-in'><a class='step-prev' href='/v/fix-towel-scrunch/'>&larr; Towel scrunch</a><span class='step-mid'><a href='/v/'>Feet and ankles</a> &middot; 2 of 4</span><a class='step-next' href='/v/fix-one-leg-stand/'>One-leg stand, done properly &rarr;</a></div></nav><section class='book'><div class='wrap'><h2>Why the foundation matters</h2><p>When the ankle cannot bend, or will not hold steady, every joint above it covers for it. That is how a stiff ankle becomes a sore knee.</p><a class='btn' href='/book.html'>Make a Fuss &rarr;</a></div></section><footer><div class="wrap">
   <p>One of 37 films that go with <a href="/book.html">Make a Fuss</a>. Nothing here replaces seeing someone about a specific problem. If something hurts sharply, stop.</p>
