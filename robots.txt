@@ -68,3 +68,6 @@ Disallow: /programs/
 
 User-agent: Timpibot
 Disallow: /programs/
+
+# Sitemap
+Sitemap: https://jbhealth.co.uk/sitemap.xml
