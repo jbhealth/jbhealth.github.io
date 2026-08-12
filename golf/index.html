@@ -184,6 +184,13 @@
   @media(prefers-reduced-motion:reduce){.reveal{animation:none;opacity:1;transform:none;}}
   .email-plain{font-weight:600;color:inherit;user-select:all;-webkit-user-select:all;}
 
+  .faq-list{margin-top:18px;max-width:760px;}
+  .faq-item{border-bottom:1px solid rgba(27,63,107,0.10);}
+  .faq-item summary{cursor:pointer;list-style:none;font-size:16px;font-weight:600;color:var(--navy);padding:14px 26px 14px 0;position:relative;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+";position:absolute;right:2px;top:12px;color:var(--blue);font-size:20px;font-weight:400;}
+  .faq-item[open] summary::after{content:"\2212";}
+  .faq-item p{font-size:15.5px;color:#39424c;line-height:1.6;padding:0 0 16px;max-width:66ch;}
 </style>
 <link rel="canonical" href="https://jbhealth.co.uk/golf/">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -297,8 +304,8 @@
     </div>
     <div class="nav-links">
       <a href="#distance" class="link">Where distance goes</a>
-      <a href="#train" class="link">What I train</a>
       <a href="#how" class="link">How it works</a>
+      <a href="#faq" class="link">Questions</a>
       <a href="https://jbhealth.co.uk/" class="link nav-cross">Training for Life</a>
       <a href="mailto:james@jbhealth.co.uk?subject=Golf%20training&body=Hi%2C%0A%0AI%27d%20like%20to%20find%20out%20more%20about%20your%20golf%20training.%0A%0ATo%20give%20you%20a%20bit%20to%20go%20on%3A%0A-%20A%20little%20about%20me%20%28age%2C%20how%20active%20I%20am%20now%29%3A%0A-%20My%20game%20%28handicap%2C%20rounds%20a%20week%29%3A%0A-%20What%20I%27d%20like%20to%20work%20on%3A%0A-%20Any%20old%20injuries%2C%20niggles%20or%20restrictions%3A%0A%0AThanks%21" class="btn nav-cta">Email</a>
     </div>
@@ -321,28 +328,13 @@
   <div class="wrap">
     <div class="kicker">Where your distance went</div>
     <h2 class="section-title">It's rarely the swing, it's the body under it</h2>
-    <p class="lead">Past 50, the limit usually isn't your technique, it's the body under it: the turn shortens, the back tightens by the ninth, the closing holes feel nothing like the first. That's rarely age alone, more often physical limits you can train to improve.</p>
-    <p class="lead" style="margin-top:14px">A good swing, and the distance and accuracy it brings, come from four things working together: coordination, so the swing fires in the right order; mobility, for a full turn that loads behind the ball; stability, a solid base so no power leaks away; and strength, to drive it through impact. Each one fades a little over time, and each one can be rebuilt. Do that, and the yards and accuracy return.</p>
-  </div>
-</section>
-
-<section class="section-tint" id="train">
-  <div class="wrap">
-    <div class="kicker">What I train</div>
-    <h2 class="section-title">A round asks three things of your body</h2>
+    <p class="lead">Past 50, the limit usually isn't your technique, it's the body under it: the turn shortens, the back tightens by the ninth, the closing holes feel nothing like the first. That's rarely age alone, more often physical limits you can train to improve. A round asks three things of your body, and each one can be rebuilt:</p>
     <ul class="get-list">
       <li><b>Rotation that frees the swing.</b> A fuller, easier turn through the hips and mid-back: more coil, less strain, and the clubhead speed that adds distance.</li>
       <li><b>Mobility and control.</b> Hips, shoulders, mid-back and ankles moving freely and under control, so the joints aren't taking load they shouldn't and your ball-striking stays consistent.</li>
       <li><b>Stamina for 18.</b> Conditioning so holes 16 to 18 feel like 1 to 3, your swing as sharp on the last tee as the first.</li>
     </ul>
-  </div>
-</section>
-
-<section id="pain">
-  <div class="wrap">
-    <div class="kicker">Less pain</div>
-    <h2 class="section-title">Fix the cause, not just the round-day ache</h2>
-    <p class="lead">If your back, shoulder or knees flare during a round or stiffen the next morning, the right training usually fixes it at the source: a hip that won't rotate, a locked mid-back, a shoulder short on range.</p>
+    <p class="lead" style="margin-top:18px">And if your back, shoulder or knees flare during a round or stiffen the next morning, the same training usually fixes it at the source: a hip that won't rotate, a locked mid-back, a shoulder short on range.</p>
   </div>
 </section>
 
@@ -366,12 +358,12 @@
 <section id="faq">
 <div class="wrap">
 <h2 class="reveal">Common questions</h2>
-<ul class="get-list reveal d2">
-<li><b>Can golf fitness add distance?</b> Yes. Most lost distance after 50 comes from a restricted turn and weak rotation, not technique. Train the turn, hip and mid-back mobility and lower-body power and you restore the clubhead speed that distance comes from.</li>
-<li><b>Will it help my consistency?</b> A stable, mobile body repeats its swing more easily. Better control through the hips, core and shoulders means a more repeatable strike, and fewer breakdowns over the closing holes.</li>
-<li><b>Can I train around back, knee or shoulder pain?</b> Yes. The programming is built around old injuries and restrictions, working the cause rather than the round-day ache, so you play more comfortably.</li>
-<li><b>Do I need a gym?</b> No. Every programme is tailored to the kit you have, from a full gym to a few dumbbells and a band at home, and delivered to your own programme page on your phone.</li>
-</ul>
+<div class="faq-list reveal d2">
+<details class="faq-item"><summary>Can golf fitness add distance?</summary><p>Yes. Most lost distance after 50 comes from a restricted turn and weak rotation, not technique. Train the turn, hip and mid-back mobility and lower-body power and you restore the clubhead speed that distance comes from.</p></details>
+<details class="faq-item"><summary>Will it help my consistency?</summary><p>A stable, mobile body repeats its swing more easily. Better control through the hips, core and shoulders means a more repeatable strike, and fewer breakdowns over the closing holes.</p></details>
+<details class="faq-item"><summary>Can I train around back, knee or shoulder pain?</summary><p>Yes. The programming is built around old injuries and restrictions, working the cause rather than the round-day ache, so you play more comfortably.</p></details>
+<details class="faq-item"><summary>Do I need a gym?</summary><p>No. Every programme is tailored to the kit you have, from a full gym to a few dumbbells and a band at home, and delivered to your own programme page on your phone.</p></details>
+</div>
 </div>
 </section>
 <section class="section-navy about" id="about">
@@ -410,7 +402,7 @@
     <div class="foot-brand">JB Health<span>Built for bodies with mileage</span></div>
     <div class="foot-links">
       <a href="https://jbhealth.co.uk/">Training for Life</a>
-      <a href="#train">What I train</a>
+      <a href="#distance">Where distance goes</a>
       <a href="mailto:james@jbhealth.co.uk?subject=Golf%20training&body=Hi%2C%0A%0AI%27d%20like%20to%20find%20out%20more%20about%20your%20golf%20training.%0A%0ATo%20give%20you%20a%20bit%20to%20go%20on%3A%0A-%20A%20little%20about%20me%20%28age%2C%20how%20active%20I%20am%20now%29%3A%0A-%20My%20game%20%28handicap%2C%20rounds%20a%20week%29%3A%0A-%20What%20I%27d%20like%20to%20work%20on%3A%0A-%20Any%20old%20injuries%2C%20niggles%20or%20restrictions%3A%0A%0AThanks%21">james@jbhealth.co.uk</a>
       <a href="mailto:james@jbhealth.co.uk?subject=Golf%20training&body=Hi%2C%0A%0AI%27d%20like%20to%20find%20out%20more%20about%20your%20golf%20training.%0A%0ATo%20give%20you%20a%20bit%20to%20go%20on%3A%0A-%20A%20little%20about%20me%20%28age%2C%20how%20active%20I%20am%20now%29%3A%0A-%20My%20game%20%28handicap%2C%20rounds%20a%20week%29%3A%0A-%20What%20I%27d%20like%20to%20work%20on%3A%0A-%20Any%20old%20injuries%2C%20niggles%20or%20restrictions%3A%0A%0AThanks%21">james@jbhealth.co.uk</a>
       <a href="https://jbhealth.github.io/programs/privacy.html" target="_blank" rel="noopener">Privacy</a>
