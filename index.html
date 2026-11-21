@@ -576,7 +576,7 @@ function say(t){m.hidden=false;m.textContent=t;}
 f.addEventListener('submit',function(e){e.preventDefault();if(busy)return;
   if(!U){say('Draft preview: the sign-up is not connected here, so nothing was sent.');return;}
   var b=f.querySelector('button'),old=b.textContent;busy=true;b.disabled=true;b.textContent='Sending';
-  fetch(U,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:f.email.value,fortnightly:f.fortnightly.checked,page:location.pathname,website:f.hp_field.value})})
+  fetch(U,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:f.email.value,fortnightly:f.fortnightly.checked,page:location.pathname,ad:new URLSearchParams(location.search).get('ad')||'',website:f.hp_field.value})})
   .then(function(r){return r.json();})
   .then(function(d){
     if(d&&d.ok){f.style.display='none';say("Sent. Look for an email from James at JB Health. If it isn't there in a few minutes, check your junk folder.");return;}
